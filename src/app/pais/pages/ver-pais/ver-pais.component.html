@@ -8,7 +8,7 @@
     
     <div class="row">
         <div class="col-12">
-            <h1>País: <small>{{ pais.name }}</small></h1>
+            <h1>País: <small>{{ pais.name.common }}</small></h1>
         </div>
     </div>
 
@@ -25,9 +25,33 @@
                 <li class="list-group-item">
                     <strong>Población</strong> {{ pais.population | number}}
                 </li>
+                <li class="list-group-item">
+                    <strong>Código numérico</strong> {{ pais.ccn3 }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Código alpha3</strong> {{ pais.cca3 }}
+                </li>
             </ul>
         </div>
 
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="col">
+                <span 
+                    *ngFor="let t of pais.translations | keyvalue"
+                    class="badge bg-primary me-2"
+                >
+                    {{ t.value.official }}
+                </span>
+            </div>
+
+            <!-- <div class="mt-5">
+                {{pais | json}}
+            </div> -->
+
+        </div>
     </div>
 
 </ng-template>
